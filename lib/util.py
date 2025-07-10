@@ -17,9 +17,30 @@ def align_track_with_chromsize(track, chromsizes):
 
     # Get chromosome information from the track
     chrom = track['chr'].unique().item()
+    print(f"[DEBUG] Requested chrom: '{chrom}'")
+    print(f"[DEBUG] Available chromsizes keys: {list(chromsizes.index)}")
+
 
     # Get chromosome size
-    size = chromsizes.at[chrom]
+
+    # redone to catch errors
+    # add smth to normalize chrom names?
+    try:
+        size = chromsizes.at[chrom]
+    except KeyError:
+        alt_chrom = chrom.removeprefix("chr") if chrom.startswith("chr") else "chr" + chrom
+        print(f"[DEBUG] Trying alternate chrom: '{alt_chrom}'")
+        """
+        # Try stripping 'chr' if not found
+        alt_chrom = chrom.removeprefix("chr") if chrom.startswith("chr") else "chr" + chrom
+        size = chromsizes.at[alt_chrom]
+        """
+        try:
+            size = chromsizes.at[alt_chrom]
+        except KeyError as e:
+            print(f"[ERROR] Neither '{chrom}' nor '{alt_chrom}' found in chromsizes index.")
+            raise
+
 
     # Update 'end' coordinates exceeding chromosome size
     track.loc[track['end'] > size, 'end'] = size

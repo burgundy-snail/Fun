@@ -175,7 +175,7 @@ def _calculate_SoN_score(clr, chrom, norm, ext_length, padding_width, offset, co
 
         return None
 
-    mat = clr.matrix(balance=norm).fetch(chrom)
+    mat = clr.matrix(balance=False).fetch(chrom)
     SoN_score = calculate_signal_noise_ratio_score(
         mat=mat, extension_length=ext_length,
         resolution=resolution, half_width=padding_width,

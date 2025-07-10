@@ -93,7 +93,7 @@ logger = logging.getLogger(__name__)
     "--signal_noise_background",
     help = "The threshold of SoN(fold change) for fountains",
     nargs=5,
-    default=1.0,
+    default=(1.0, 1.0, 1.0, 1.0, 1.0), #was 1.0
     show_default=True,
     type = float
 )
