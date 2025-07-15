@@ -1,7 +1,7 @@
 
 # Fun  
 ![image](https://zenodo.org/badge/641802007.svg)  
-**"Fun"** is the algorithm to identify **replication fountains**. The current version is still preliminary and needs further refinement.  
+**"Fun"** is an algorithm created by Liu et al. for identification of **replication fountains**. It was introduced in [this paper.](https://pubmed.ncbi.nlm.nih.gov/38484065/) I am reworking it as a side project during my internship with the [Replication program and genome instability](https://institut-curie.org/team/chen) team at Institut Curie.
 
 ![image](https://github.com/zzdzr/Fun/blob/master/image/Fun.png)
 
